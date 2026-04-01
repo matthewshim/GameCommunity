@@ -20,7 +20,7 @@ export default function LoginPage() {
       const { data: res } = await authApi.login(email, password);
       if (res.success) {
         setAuth(res.data.accessToken, res.data.refreshToken, res.data.user);
-        toast.success('로그인 성공! 🎮');
+        toast.success('로그인 성공! ⚔️');
         navigate(res.data.user.hasProfile ? '/matching' : '/onboarding');
       }
     } catch (err: any) {
@@ -33,10 +33,11 @@ export default function LoginPage() {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
+      <div className="auth-card animate-fade-in">
         <div className="auth-logo">
-          <h1>⚔️ SyncPlay</h1>
-          <p>라그나로크 온라인 파티/길드 매칭</p>
+          <span className="auth-icon animate-float">⚔️</span>
+          <h1>SyncPlay</h1>
+          <p className="auth-subtitle">Ragnarok Online Party & Guild Matching</p>
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit}>
@@ -60,10 +61,10 @@ export default function LoginPage() {
             />
           </div>
 
-          {error && <p className="error-text">{error}</p>}
+          {error && <p className="error-text">⚠ {error}</p>}
 
           <button className="btn btn-primary btn-full" type="submit" disabled={loading}>
-            {loading ? '로그인 중...' : '로그인'}
+            {loading ? '접속 중...' : '모험 시작'}
           </button>
 
           <div className="auth-divider">or</div>
@@ -74,7 +75,7 @@ export default function LoginPage() {
         </form>
 
         <div className="auth-footer">
-          계정이 없으신가요? <Link to="/signup">회원가입</Link>
+          계정이 없으신가요? <Link to="/signup">모험가 등록</Link>
         </div>
       </div>
     </div>

@@ -21,11 +21,11 @@ export default function SignupPage() {
       const { data: res } = await authApi.signup(email, password, nickname);
       if (res.success) {
         setAuth(res.data.accessToken, res.data.refreshToken, res.data.user);
-        toast.success('가입 완료! 프로필을 설정해주세요 🎮');
+        toast.success('모험가 등록 완료! 프로필을 설정해주세요 ⚔️');
         navigate('/onboarding');
       }
     } catch (err: any) {
-      const msg = err.response?.data?.message || '회원가입에 실패했습니다.';
+      const msg = err.response?.data?.message || '등록에 실패했습니다.';
       setError(msg);
     } finally {
       setLoading(false);
@@ -34,10 +34,11 @@ export default function SignupPage() {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
+      <div className="auth-card animate-fade-in">
         <div className="auth-logo">
-          <h1>⚔️ SyncPlay</h1>
-          <p>라그나로크 모험가 등록</p>
+          <span className="auth-icon animate-float">🛡️</span>
+          <h1>SyncPlay</h1>
+          <p className="auth-subtitle">모험가 등록</p>
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit}>
@@ -55,7 +56,7 @@ export default function SignupPage() {
             <label>닉네임</label>
             <input
               className="input-field"
-              type="text" placeholder="프론테라의용사 (2~20자)"
+              type="text" placeholder="프론테라에서 불릴 이름 (2~20자)"
               value={nickname} onChange={(e) => setNickname(e.target.value)}
               required minLength={2} maxLength={20}
             />
@@ -71,15 +72,15 @@ export default function SignupPage() {
             />
           </div>
 
-          {error && <p className="error-text">{error}</p>}
+          {error && <p className="error-text">⚠ {error}</p>}
 
           <button className="btn btn-primary btn-full" type="submit" disabled={loading}>
-            {loading ? '가입 중...' : '모험 시작하기'}
+            {loading ? '등록 중...' : '모험 시작하기'}
           </button>
         </form>
 
         <div className="auth-footer">
-          이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+          이미 모험가이신가요? <Link to="/login">로그인</Link>
         </div>
       </div>
     </div>
