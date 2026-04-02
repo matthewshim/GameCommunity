@@ -64,7 +64,7 @@ public class EvaluationService {
         target.setMannerTier(calculateTier(newScore));
         userRepository.save(target);
 
-        log.info("📊 Evaluation: User {} → User {} | Score: {:.1f} → {:.1f} ({})",
+        log.info("📊 Evaluation: User {} → User {} | Score: {} → {} ({})",
                 evaluatorId, targetId, target.getMannerScore(), newScore, target.getMannerTier());
 
         return EvaluationResponse.from(eval);

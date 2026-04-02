@@ -84,8 +84,8 @@ export default function HomePage() {
 
         {/* 버전 정보 */}
         <div className="card" style={{ textAlign: 'center', animationDelay: '0.2s' }}>
-          <p className="caption">🚧 Sprint 2: RO 프로필 + 온보딩 개발 중</p>
-          <p className="caption" style={{ marginTop: '4px' }}>v0.2.0 — Phase 1 MVP</p>
+          <p className="caption">✅ Phase 1 MVP Complete</p>
+          <p className="caption" style={{ marginTop: '4px' }}>v0.4.0 — 매칭 + 채팅 + 매너 평가</p>
         </div>
       </div>
     </div>
