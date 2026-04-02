@@ -6,6 +6,8 @@ import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import OnboardingPage from './pages/OnboardingPage';
 import MatchingPage from './pages/MatchingPage';
+import ChatListPage from './pages/ChatListPage';
+import ChatRoomPage from './pages/ChatRoomPage';
 import './styles/global.css';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
@@ -27,6 +29,8 @@ export default function App() {
         <Route path="/signup" element={<PublicRoute><SignupPage /></PublicRoute>} />
         <Route path="/onboarding" element={<PrivateRoute><OnboardingPage /></PrivateRoute>} />
         <Route path="/matching" element={<PrivateRoute><MatchingPage /></PrivateRoute>} />
+        <Route path="/chat" element={<PrivateRoute><ChatListPage /></PrivateRoute>} />
+        <Route path="/chat/:matchId" element={<PrivateRoute><ChatRoomPage /></PrivateRoute>} />
         <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
